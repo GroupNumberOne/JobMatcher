@@ -18,17 +18,22 @@ import webapp.java.Executer;
  */
 @WebServlet("/MainServlet")
 public class MainServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;  
 	private Executer executer;
 	
-	ArrayList<String> results;
-	ArrayList<Boolean> results2;
+	private String box1;
+	private String box2;
+	private String box3;
 	
-	public void init() throws ServletException {
+	ArrayList<String> select1;
+	ArrayList<Boolean> results1;
+	
+	public void voeruit() throws ServletException {
 		executer = new Executer();
 		try {
-			results = executer.selectQuery("rijbewijs","cv");
-			results2 = executer.Match("t","rijbewijs","cv");
+			select1 = executer.selectQuery(box1,box2);
+			results1 = executer.Match(box3,box1,box2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -41,21 +46,47 @@ public class MainServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// read form fields
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        setBox1(request.getParameter("box1"));
+        setBox2(request.getParameter("box2"));
+        setBox3(request.getParameter("box3"));
+        
+        voeruit();
         
         // get response writer
         PrintWriter writer = response.getWriter();
          
         // build HTML code
         String htmlResponse = "<html>";
-        htmlResponse += "<h2>Your username is: " + username + "<br/>";      
-        htmlResponse += "Your password is: " + password + "</h2>";    
+        htmlResponse += "<h1>Awesome Shizzle!</h1>Database output: " + select1 + "<br /> <br /> Check op matches: " + results1;
         htmlResponse += "</html>";
-        htmlResponse += "<h1>Awesome Shizzle!</h1>Database output: " + results + "<br /> <br /> Check op matches: " + results2;
-         
+        
         // print
         writer.println(htmlResponse);
+        
+	}
+
+	public String getBox1() {
+		return box1;
+	}
+
+	public void setBox1(String box1) {
+		this.box1 = box1;
+	}
+
+	public String getBox2() {
+		return box2;
+	}
+
+	public void setBox2(String box2) {
+		this.box2 = box2;
+	}
+
+	public String getBox3() {
+		return box3;
+	}
+
+	public void setBox3(String box3) {
+		this.box3 = box3;
 	}
 
 }
