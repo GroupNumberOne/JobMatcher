@@ -16,23 +16,23 @@ import webapp.java.Executer;
 /**
  * Servlet implementation class DBTester
  */
-@WebServlet("/Search_CV_Results")
-public class Search_CV_Results extends HttpServlet {
+@WebServlet("/Search_VAC_Results")
+public class Search_VAC_Results extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;  
 	private Executer executer;
 	
-	private String woonplaatsInput;
-	private String rijbewijsInput;
+	private String plaatsInput;
+	private String niveauInput;
 	
-	ArrayList<String> woonplaatsSelect;
-	ArrayList<Integer> woonplaatsResults;
+	ArrayList<String> plaatsSelect;
+	ArrayList<Integer> plaatsResults;
 	
-	public void matchWoonplaats() throws ServletException {
+	public void matchplaats() throws ServletException {
 		executer = new Executer();
 		try {
-			woonplaatsSelect = executer.selectQuery("woonplaats","cv");
-			woonplaatsResults = executer.Match(woonplaatsInput,"woonplaats","cv");
+			//plaatsSelect = executer.selectQuery("plaats","vacatures");
+			plaatsResults = executer.Match(plaatsInput,"plaats","vacatures");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,8 +44,8 @@ public class Search_CV_Results extends HttpServlet {
 	public void matchRijbewijs() throws ServletException {
 		executer = new Executer();
 		try {
-			rijbewijsSelect = executer.selectQuery("rijbewijs","cv");
-			rijbewijsResults = executer.Match(rijbewijsInput,"rijbewijs","cv");
+			//rijbewijsSelect = executer.selectQuery("niveau","cv");
+			rijbewijsResults = executer.Match(niveauInput,"niveau","cv");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,10 +58,10 @@ public class Search_CV_Results extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// read form fields
-        setwoonplaatsInput(request.getParameter("woonplaatsInput"));
-        setRijbewijsInput(request.getParameter("rijbewijs"));
+        setplaatsInput(request.getParameter("plaatsInput"));
+        setniveauInput(request.getParameter("niveauInput"));
         
-        matchWoonplaats();
+        matchplaats();
         matchRijbewijs();
         
         // get response writer
@@ -69,27 +69,27 @@ public class Search_CV_Results extends HttpServlet {
          
         // build HTML code
         String htmlResponse = "<html> <h1>Resultaten</h1>";
-        htmlResponse += "<h2>Woonplaats: "+woonplaatsInput+"</h2> Matches gevonden op plaats: " + woonplaatsResults + "<br /> <br />";
-        htmlResponse += "<h2>Rijbewijs: "+rijbewijsInput+"</h2> Matches gevonden op plaats: " + rijbewijsResults + "<br /> <br />";
+        htmlResponse += "<h2>plaats: "+plaatsInput+"</h2> Matches gevonden op plaats: " + plaatsResults + "<br /> <br />";
+        htmlResponse += "<h2>Niveau: "+niveauInput+"</h2> Matches gevonden op plaats: " + rijbewijsResults + "<br /> <br />";
         htmlResponse += "</html>";
         
         // print
         writer.println(htmlResponse);
 	}
 
-	public String getwoonplaatsInput() {
-		return woonplaatsInput;
+	public String getplaatsInput() {
+		return plaatsInput;
 	}
 
-	public void setwoonplaatsInput(String woonplaatsInput) {
-		this.woonplaatsInput = woonplaatsInput;
+	public void setplaatsInput(String plaatsInput) {
+		this.plaatsInput = plaatsInput;
 	}
 
-	public String getRijbewijsInput() {
-		return rijbewijsInput;
+	public String getniveauInput() {
+		return niveauInput;
 	}
 
-	public void setRijbewijsInput(String rijbewijsInput) {
-		this.rijbewijsInput = rijbewijsInput;
+	public void setniveauInput(String niveauInput) {
+		this.niveauInput = niveauInput;
 	}
 }

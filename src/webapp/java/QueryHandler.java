@@ -34,7 +34,7 @@ public class QueryHandler {
 	// SQL query, SELECT "column" from "table"
 	public ArrayList<String> doSelect(String column, String table) {
 		System.out.println("\n[SELECT WORDT UITGEVOERD]");
-	    String query = "SELECT "+column+" FROM "+table;
+	    String query = "SELECT "+column+" FROM "+table+" ORDER BY id";
 	    
 	    try
 	    {
@@ -42,7 +42,7 @@ public class QueryHandler {
 	    	ResultSet rs = st.executeQuery(query);
 	    	while (rs.next())
 	    	{	
-	    		String str = rs.getString(column);
+	    		String str = rs.getString(column.toString());
 	    		result.add(str);
 	    	}
 	    	

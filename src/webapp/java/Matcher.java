@@ -19,11 +19,10 @@ public class Matcher{
 		  for (int i = 0; i < second.size(); i ++) {
 			  if (second.get(i) != null) {
 				  if((second.get(i).toLowerCase()).matches("(.*)"+first.toLowerCase()+"(.*)")){
-				  resultsList.add(i + 1);
+					  resultsList.add(i + 1);
 				  }
 			  }
 			  else {
-				  //resultsList.add(false);
 			  }
 		  }
 		  return resultsList;
