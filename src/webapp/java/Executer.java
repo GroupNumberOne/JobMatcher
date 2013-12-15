@@ -20,7 +20,7 @@ public class Executer {
 	}
 	
 	// MATCH "word to match", "column", "table"
-	public ArrayList<Boolean> Match(String WoordOmTeMatchen, String column, String table) throws SQLException {
+	public ArrayList<Integer> Match(String WoordOmTeMatchen, String column, String table) throws SQLException {
 		ArrayList<String> selectResults = selectQuery(column,table);
 		Matcher matcher = new Matcher(WoordOmTeMatchen,selectResults);
 

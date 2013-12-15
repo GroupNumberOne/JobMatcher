@@ -22,18 +22,31 @@ public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;  
 	private Executer executer;
 	
-	private String box1;
-	private String box2;
-	private String box3;
+	private String woonplaatsInput;
+	private String tableInput;
+	private String rijbewijsInput;
 	
-	ArrayList<String> select1;
-	ArrayList<Boolean> results1;
+	ArrayList<String> woonplaatsSelect;
+	ArrayList<Integer> woonplaatsResults;
 	
-	public void voeruit() throws ServletException {
+	public void matchWoonplaats() throws ServletException {
 		executer = new Executer();
 		try {
-			select1 = executer.selectQuery(box1,box2);
-			results1 = executer.Match(box3,box1,box2);
+			woonplaatsSelect = executer.selectQuery("woonplaats",tableInput);
+			woonplaatsResults = executer.Match(woonplaatsInput,"woonplaats",tableInput);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	  }
+	
+	ArrayList<String> rijbewijsSelect;
+	ArrayList<Integer> rijbewijsResults;
+	
+	public void matchRijbewijs() throws ServletException {
+		executer = new Executer();
+		try {
+			rijbewijsSelect = executer.selectQuery("rijbewijs",tableInput);
+			rijbewijsResults = executer.Match(rijbewijsInput,"rijbewijs",tableInput);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -46,47 +59,47 @@ public class MainServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// read form fields
-        setBox1(request.getParameter("box1"));
-        setBox2(request.getParameter("box2"));
-        setBox3(request.getParameter("box3"));
+        setwoonplaatsInput(request.getParameter("woonplaatsInput"));
+        settableInput(request.getParameter("tableInput"));
+        setRijbewijsInput(request.getParameter("rijbewijs"));
         
-        voeruit();
+        matchWoonplaats();
+        matchRijbewijs();
         
         // get response writer
         PrintWriter writer = response.getWriter();
          
         // build HTML code
-        String htmlResponse = "<html>";
-        htmlResponse += "<h1>Awesome Shizzle!</h1>Database output: " + select1 + "<br /> <br /> Check op matches: " + results1;
+        String htmlResponse = "<html> <h1>Resultaten</h1>";
+        htmlResponse += "<h2>Woonplaats: "+woonplaatsInput+"</h2> Matches gevonden op plaats: " + woonplaatsResults + "<br /> <br />";
+        htmlResponse += "<h2>Rijbewijs: "+rijbewijsInput+"</h2> Matches gevonden op plaats: " + rijbewijsResults + "<br /> <br />";
         htmlResponse += "</html>";
         
         // print
         writer.println(htmlResponse);
-        
 	}
 
-	public String getBox1() {
-		return box1;
+	public String getwoonplaatsInput() {
+		return woonplaatsInput;
 	}
 
-	public void setBox1(String box1) {
-		this.box1 = box1;
+	public void setwoonplaatsInput(String woonplaatsInput) {
+		this.woonplaatsInput = woonplaatsInput;
 	}
 
-	public String getBox2() {
-		return box2;
+	public String gettableInput() {
+		return tableInput;
 	}
 
-	public void setBox2(String box2) {
-		this.box2 = box2;
+	public void settableInput(String tableInput) {
+		this.tableInput = tableInput;
 	}
 
-	public String getBox3() {
-		return box3;
+	public String getRijbewijsInput() {
+		return rijbewijsInput;
 	}
 
-	public void setBox3(String box3) {
-		this.box3 = box3;
+	public void setRijbewijsInput(String rijbewijsInput) {
+		this.rijbewijsInput = rijbewijsInput;
 	}
-
 }

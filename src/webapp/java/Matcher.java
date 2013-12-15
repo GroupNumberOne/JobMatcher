@@ -7,7 +7,7 @@ public class Matcher{
 	  String first;
 	  ArrayList<String> second;
 	  
-	  ArrayList<Boolean> resultsList = new ArrayList<Boolean>();
+	  ArrayList<Integer> resultsList = new ArrayList<Integer>();
 	  
 	  public Matcher(String first, ArrayList<String> second) {
 		  this.first = first;
@@ -15,13 +15,15 @@ public class Matcher{
 	  }
 	  
 	  // Match String first with all values inside ArrayList second
-	  public ArrayList<Boolean> Match() {
+	  public ArrayList<Integer> Match() {
 		  for (int i = 0; i < second.size(); i ++) {
 			  if (second.get(i) != null) {
-				  resultsList.add((second.get(i).toLowerCase()).matches("(.*)"+first.toLowerCase()+"(.*)"));
+				  if((second.get(i).toLowerCase()).matches("(.*)"+first.toLowerCase()+"(.*)")){
+				  resultsList.add(i + 1);
+				  }
 			  }
 			  else {
-				  resultsList.add(false);
+				  //resultsList.add(false);
 			  }
 		  }
 		  return resultsList;
