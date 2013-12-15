@@ -11,7 +11,8 @@ public class Executer {
 	
 	// SQL query, SELECT "column" from "table"
 	public ArrayList<String> selectQuery(String column, String table) throws SQLException {
-		DBConnectorSingleton dbcs = DBConnectorSingleton.getInstance("145.24.222.158", "5432", "INFPRJ01-56", "postgres", "GroeP1");
+		DBConnectorSingleton dbcs = DBConnectorSingleton.getInstance(
+				"145.24.222.158", "5432", "INFPRJ01-56", "postgres", "GroeP1");
 		
 		QueryHandler qh = new QueryHandler(dbcs.getDBConn());
 		Output = qh.doSelect(column, table);
