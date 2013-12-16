@@ -4,24 +4,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.common.collect.HashMultiset;
-import com.google.common.collect.Multiset;
-import com.google.common.collect.Multisets;
 
 import webapp.java.Executer;
 
@@ -36,7 +26,7 @@ public class Search_CV_Results extends HttpServlet {
 
 	private String woonplaatsInput;
 
-	ArrayList<String> woonplaatsSelect;
+	//ArrayList<String> woonplaatsSelect;
 	ArrayList<Integer> woonplaatsResults;
 
 	public void matchWoonplaats() throws ServletException {
@@ -52,7 +42,7 @@ public class Search_CV_Results extends HttpServlet {
 
 	private String rijbewijsInput;
 
-	ArrayList<String> rijbewijsSelect;
+	//ArrayList<String> rijbewijsSelect;
 	ArrayList<Integer> rijbewijsResults;
 
 	public void matchRijbewijs() throws ServletException {
@@ -66,29 +56,17 @@ public class Search_CV_Results extends HttpServlet {
 		}
 	}
 
-	String drek;
-	
-	public void testFunction() {
-		Multiset<Integer> myMultiset = HashMultiset.create();
-		
-		ArrayList<Integer> totalResults = new ArrayList<Integer>();
-		totalResults.addAll(rijbewijsResults);
-		totalResults.addAll(woonplaatsResults);
-		
-		for (int i = 0; i < totalResults.size(); i++) {
-			if (totalResults.get(i) != null){
-				myMultiset.add(totalResults.get(i));
-			}
-			else if (totalResults.get(i) == null){
-				drek += "null detected";
-			}
-		}
+	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
-		for (Integer type : Multisets.copyHighestCountFirst(myMultiset).elementSet()) {
-			drek += ("**Positie: " + type + " Aantal: " + myMultiset.count(type) + "** ");
-		}
+	public void createResultsHM() {
+		hm.clear();
+		
+		hm = executer.addToHashmap(woonplaatsResults, hm, 100);
+		hm = executer.addToHashmap(rijbewijsResults, hm, 50);
+		
+        hm = Executer.sortByValues(hm);
 	}
-
+	
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// read form fields
@@ -97,7 +75,7 @@ public class Search_CV_Results extends HttpServlet {
 
 		matchWoonplaats();
 		matchRijbewijs();
-		testFunction();
+		createResultsHM();
 
 		// get response writer
 		PrintWriter writer = response.getWriter();
@@ -110,7 +88,7 @@ public class Search_CV_Results extends HttpServlet {
 		htmlResponse += "<h2>Rijbewijs: " + rijbewijsInput
 				+ "</h2> Matches gevonden op plaats: " + rijbewijsResults
 				+ "<br /> <br />";
-		htmlResponse += drek + "</html>";
+		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hm + "</html>";
 
 		// print
 		writer.println(htmlResponse);

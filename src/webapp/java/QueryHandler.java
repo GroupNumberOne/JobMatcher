@@ -18,7 +18,7 @@ public class QueryHandler {
 
 	// SQL query, INSERT "values" into "columns" in "table"
 	public void doInsert(String values, String columns, String table) {
-		System.out.print("\n[INSERT WORDT UITGEVOERD]");
+		
 		try {
 			Statement st = databaseConnection.createStatement();
 			st.executeUpdate("INSERT INTO " + table + " (" + columns + ") "
@@ -30,7 +30,6 @@ public class QueryHandler {
 
 	// SQL query, SELECT "column" from "table"
 	public ArrayList<String> doSelect(String column, String table) {
-		System.out.println("\n[SELECT WORDT UITGEVOERD]");
 		String query = "SELECT " + column + " FROM " + table + " ORDER BY id";
 
 		try {
