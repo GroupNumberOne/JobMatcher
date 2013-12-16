@@ -26,9 +26,11 @@ public class Search_CV_Results extends HttpServlet {
 
 	private String rijbewijsInput;
 	private String woonplaatsInput;
+	private String opleidingInput;
 
 	ArrayList<Integer> woonplaatsResults;
 	ArrayList<Integer> rijbewijsResults;
+	ArrayList<Integer> opleidingResults;
 	
 	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
@@ -48,7 +50,8 @@ public class Search_CV_Results extends HttpServlet {
 		hm.clear();
 		
 		hm = executer.addToHashmap(woonplaatsResults, hm, 100);
-		hm = executer.addToHashmap(rijbewijsResults, hm, 50);
+		hm = executer.addToHashmap(rijbewijsResults, hm, 100);
+		hm = executer.addToHashmap(opleidingResults, hm, 100);
 		
         hm = Executer.sortByValues(hm);
 	}
@@ -56,11 +59,13 @@ public class Search_CV_Results extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// read form fields
-		setwoonplaatsInput(request.getParameter("woonplaatsInput"));
-		setRijbewijsInput(request.getParameter("rijbewijs"));
+		setWoonplaatsInput(request.getParameter("woonplaatsInput"));
+		setRijbewijsInput(request.getParameter("rijbewijsInput"));
+		setOpleidingInput(request.getParameter("opleidingInput"));
 
 		woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
 		rijbewijsResults = matchResults(rijbewijsInput, "rijbewijs", "cv");
+		opleidingResults = matchResults(opleidingInput, "opleiding", "cv");
 		createResultsHM();
 
 		// get response writer
@@ -74,6 +79,9 @@ public class Search_CV_Results extends HttpServlet {
 		htmlResponse += "<h2>Rijbewijs: " + rijbewijsInput
 				+ "</h2> Matches gevonden op plaats: " + rijbewijsResults
 				+ "<br /> <br />";
+		htmlResponse += "<h2>Opleiding: " + opleidingInput
+				+ "</h2> Matches gevonden op plaats: " + opleidingResults
+				+ "<br /> <br />";
 		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hm + "</html>";
 
 		// print
@@ -81,11 +89,11 @@ public class Search_CV_Results extends HttpServlet {
 
 	}
 
-	public String getwoonplaatsInput() {
+	public String getWoonplaatsInput() {
 		return woonplaatsInput;
 	}
 
-	public void setwoonplaatsInput(String woonplaatsInput) {
+	public void setWoonplaatsInput(String woonplaatsInput) {
 		this.woonplaatsInput = woonplaatsInput;
 	}
 
@@ -95,5 +103,13 @@ public class Search_CV_Results extends HttpServlet {
 
 	public void setRijbewijsInput(String rijbewijsInput) {
 		this.rijbewijsInput = rijbewijsInput;
+	}
+	
+	public String getOpleidingInput() {
+		return rijbewijsInput;
+	}
+
+	public void setOpleidingInput(String opleidingInput) {
+		this.opleidingInput = opleidingInput;
 	}
 }
