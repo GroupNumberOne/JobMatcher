@@ -27,10 +27,12 @@ public class Search_CV_Results extends HttpServlet {
 	private String rijbewijsInput;
 	private String woonplaatsInput;
 	private String opleidingInput;
+	private String beroepInput;
 
 	ArrayList<Integer> woonplaatsResults;
 	ArrayList<Integer> rijbewijsResults;
 	ArrayList<Integer> opleidingResults;
+	ArrayList<Integer> beroepResults;
 	
 	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
@@ -52,6 +54,7 @@ public class Search_CV_Results extends HttpServlet {
 		hm = executer.addToHashmap(woonplaatsResults, hm, 100);
 		hm = executer.addToHashmap(rijbewijsResults, hm, 100);
 		hm = executer.addToHashmap(opleidingResults, hm, 100);
+		hm = executer.addToHashmap(beroepResults, hm, 100);
 		
         hm = Executer.sortByValues(hm);
 	}
@@ -62,10 +65,12 @@ public class Search_CV_Results extends HttpServlet {
 		setWoonplaatsInput(request.getParameter("woonplaatsInput"));
 		setRijbewijsInput(request.getParameter("rijbewijsInput"));
 		setOpleidingInput(request.getParameter("opleidingInput"));
+		setBeroepInput(request.getParameter("beroepInput"));
 
 		woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
 		rijbewijsResults = matchResults(rijbewijsInput, "rijbewijs", "cv");
 		opleidingResults = matchResults(opleidingInput, "opleiding", "cv");
+		beroepResults = matchResults(beroepInput, "beroep", "cv");
 		createResultsHM();
 
 		// get response writer
@@ -81,6 +86,9 @@ public class Search_CV_Results extends HttpServlet {
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Opleiding: " + opleidingInput
 				+ "</h2> Matches gevonden op plaats: " + opleidingResults
+				+ "<br /> <br />";
+		htmlResponse += "<h2>Beroep: " + beroepInput
+				+ "</h2> Matches gevonden op plaats: " + beroepResults
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hm + "</html>";
 
@@ -111,5 +119,13 @@ public class Search_CV_Results extends HttpServlet {
 
 	public void setOpleidingInput(String opleidingInput) {
 		this.opleidingInput = opleidingInput;
+	}
+	
+	public String getBeroepInput() {
+		return beroepInput;
+	}
+
+	public void setBeroepInput(String BeroepInput) {
+		this.beroepInput = BeroepInput;
 	}
 }
