@@ -24,39 +24,25 @@ public class Search_CV_Results extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Executer executer;
 
+	private String rijbewijsInput;
 	private String woonplaatsInput;
 
-	//ArrayList<String> woonplaatsSelect;
 	ArrayList<Integer> woonplaatsResults;
-
-	public void matchWoonplaats() throws ServletException {
-		executer = new Executer();
-		try {
-			// woonplaatsSelect = executer.selectQuery("woonplaats","cv");
-			woonplaatsResults = executer.Match(woonplaatsInput, "woonplaats",
-					"cv");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private String rijbewijsInput;
-
-	//ArrayList<String> rijbewijsSelect;
 	ArrayList<Integer> rijbewijsResults;
+	
+	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
-	public void matchRijbewijs() throws ServletException {
+	public ArrayList<Integer> matchResults(String input, String column, String table) throws ServletException {
 		executer = new Executer();
+		ArrayList<Integer> resultsVar = null;
 		try {
-			// rijbewijsSelect = executer.selectQuery("rijbewijs","cv");
-			rijbewijsResults = executer
-					.Match(rijbewijsInput, "rijbewijs", "cv");
+			resultsVar = executer.Match(input, column, table);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		return resultsVar;
 	}
-
-	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 
 	public void createResultsHM() {
 		hm.clear();
@@ -73,8 +59,8 @@ public class Search_CV_Results extends HttpServlet {
 		setwoonplaatsInput(request.getParameter("woonplaatsInput"));
 		setRijbewijsInput(request.getParameter("rijbewijs"));
 
-		matchWoonplaats();
-		matchRijbewijs();
+		woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
+		rijbewijsResults = matchResults(rijbewijsInput, "rijbewijs", "cv");
 		createResultsHM();
 
 		// get response writer
