@@ -5,7 +5,9 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +37,7 @@ public class Search_CV_Results extends HttpServlet {
 	ArrayList<Integer> beroepResults;
 	
 	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
+	String hmString ="";
 
 	public ArrayList<Integer> matchResults(String input, String column, String table) throws ServletException {
 		executer = new Executer();
@@ -50,6 +53,7 @@ public class Search_CV_Results extends HttpServlet {
 
 	public void createResultsHM() {
 		hm.clear();
+		hmString = "";
 		
 		hm = executer.addToHashmap(woonplaatsResults, hm, 100);
 		hm = executer.addToHashmap(rijbewijsResults, hm, 100);
@@ -57,6 +61,20 @@ public class Search_CV_Results extends HttpServlet {
 		hm = executer.addToHashmap(beroepResults, hm, 100);
 		
         hm = Executer.sortByValues(hm);
+        
+        Set mapSet = (Set) hm.entrySet();
+        Iterator mapIterator = mapSet.iterator();
+          
+        int x = 0;
+        while (mapIterator.hasNext() && x < 10) {
+            Map.Entry mapEntry = (Map.Entry) mapIterator.next();
+            // getKey Method of HashMap access a key of map
+            Integer keyValue = (Integer) mapEntry.getKey();
+            //getValue method returns corresponding key's value
+            Integer value = (Integer) mapEntry.getValue();
+            hmString += ("Key: " + keyValue + " Value: " + value +" - ");
+            x += 1;
+        }
 	}
 	
 	protected void doPost(HttpServletRequest request,
@@ -90,7 +108,7 @@ public class Search_CV_Results extends HttpServlet {
 		htmlResponse += "<h2>Beroep: " + beroepInput
 				+ "</h2> Matches gevonden op plaats: " + beroepResults
 				+ "<br /> <br />";
-		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hm + "</html>";
+		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hmString + "</html>";
 
 		// print
 		writer.println(htmlResponse);
