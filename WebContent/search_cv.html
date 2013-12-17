@@ -1,27 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>JobMatcher</title>
+	<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="js/slideshow.js"></script>
+	<script type="text/javascript" src="js/cufon-yui.js"></script>
+	<script type="text/javascript" src="js/Arial.font.js"></script>
+	<script type="text/javascript">
+		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('div.photo a').fancyZoom({directory: 'images/zoom', scaleImg: true, closeOnClick: true});
+		});
+	</script>
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body>
-	<H2>Uber Super Matching Duber</H2>
-	<br />
-	<br />
-	<br />
-	<form name="Form" method="post" action="Search_CV_Results">
-		Woonplaats: <input type="text" name="woonplaatsInput" /> <br /><br /> 
-		Rijbewijs: <input type="radio" name="rijbewijsInput" value="t" />Ja 
-			<input type="radio" name="rijbewijsInput" value="f" />Nee <br /><br /> 
-		Opleiding: <input type="text" name="opleidingInput" /> <br /><br /> 
-		Beroep: <input type="text" name="beroepInput" /> <br /><br /> 
-		
-		Onderstaande onderdelen hebben nog geen functie.<br /><br /> 
-		
-		Jaren Werkervaring: <input type="text" name="jaren_werkervaringInput" /> <br /><br /> 
-		Cursussen: <input type="text" name="cursussenInput" /> <br /><br /> 
-		Taal ID: <input type="text" name="taalidInput" /> <br /><br /> 
-		
-		<input type="submit" value="Continue" />
-	</form>
+	<div id="bg">
+		<div class="wrap">
+			<h1><a href="index.html">JobMatcher</a></h1>
+
+			<div id="mainmenu">
+				<ul id="menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a class="current" href="#">Matchen</a>
+						<ul><li><a href="search_cv.html">Zoek een CV</a></li><li><a href="search_vac.html">Zoek een vacature</a></li><li></ul>
+					</li>
+					<li><a href="about.html">Over ons</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+
+			<div id="pitch">
+				<div id="slideshow">
+					<div class="active">
+						<img src="images/banner/Banner1.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Professional Approach</h2>
+							<p>Zeer professioneel.</p>
+						</div>
+					</div>
+					<div>
+						<img src="images/banner/Banner2.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Precise Methods</h2>
+							<p>Precisie zoals u nog nooit heeft gezien.</p>
+						</div>
+					</div>
+					<div>
+						<img src="images/banner/Banner3.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Mesurable Results</h2>
+							<p>Resultaten waarvan uw mond open zal vallen.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="main">
+				<div id="intro">
+					<h2>Zoek naar een CV</h2>
+					<form name="Form" method="post" action="Search_CV_Results">
+						<label for="woonplaatsInput">Woonplaats</label>
+						<input type="text" class="text" name="woonplaatsInput" /> <br /><br /> 
+						
+						<label for="rijbewijsInput">Rijbewijs</label>    
+						<input type="radio" name="rijbewijsInput" value="t" />&nbsp;Ja &nbsp; &nbsp;
+							<input type="radio" name="rijbewijsInput" value="f" />&nbsp;Nee  <br /><br /> 
+							
+						<label for="opleidingInput">Opleiding</label>   
+						<input type="text" class="text" name="opleidingInput" /> <br /><br /> 
+						
+						<label for="beroepInput">Beroep</label>   
+						<input type="text" class="text" name="beroepInput" /> <br /><br /> 
+						
+						Onderstaande onderdelen hebben nog geen functie.<br /><br /> 
+						
+						<label for="jaren_werkervaringInput">Jaren Werkervaring</label>   
+						<input type="text" class="text" name="jaren_werkervaringInput" /> <br /><br /> 
+						
+						<label for="cursussenInput">Cursussen</label>   
+						<input type="text" class="text" name="cursussenInput" /> <br /><br /> 
+						
+						<label for="taalidInput">Taal ID</label>   
+						<input type="text" class="text" name="taalidInput" /> <br /><br /> 
+						
+						<input class="submit" type="submit" value="Continue" />
+					</form>
+				</div>
+			</div>
+			
+			<div id="side">
+				<h4>Laatste nieuws</h4>
+				<div class="news">
+					<h5><a href="#">Aantal cv's</a></h5>
+					<p>Er zijn inmiddels al meer dan 1000 cv's te vinden met JobMatcher!</p>
+				</div>
+				<div class="news">
+					<h5><a href="#">Start JobMatcher</a></h5>
+					<p>JobMatcher is vanaf nu officiëel beschikbaar!</p>
+				</div>
+			</div> 
+		</div>
+			
+		<div id="footer">
+			<div id="footerbg">
+				<div class="wrap">
+					<p id="footer_menu">
+						<a href="#">Informatie over uw privacy</a>
+						<a href="#">&#169; Groep 1 </a>
+					</p>
+					<p id="copy">JobMatcher <span>voor de beste matches</span></p>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

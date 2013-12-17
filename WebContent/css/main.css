@@ -422,6 +422,13 @@ input.text, textarea.text {
 	border: 1px solid #ddd;
 	margin: 0 0 3px;
 }
+input.radio {
+	padding: 5px;
+	border: 0;
+	border: 1px solid #ddd;
+	margin: 0 0 3px;
+}
+
 textarea.text  {
 	width: 400px;
 	height: 120px;

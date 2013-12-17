@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import webapp.java.Executer;
 import webapp.java.QueryHandler;
+import webapp.java.Search_CV_HTML;
 
 /**
  * Servlet implementation class Search_CV_Results
@@ -106,21 +107,25 @@ public class Search_CV_Results extends HttpServlet {
 		PrintWriter writer = response.getWriter();
 
 		// build HTML code
-		String htmlResponse = "<html> <h1>Resultaten</h1>";
-		htmlResponse += "<h2>Woonplaats: " + woonplaatsInput
-				+ "</h2> Matches gevonden op plaats: " + woonplaatsResults
+		String htmlResponse = "<h2>Resultaten</h2>";
+		htmlResponse += "<h3>Woonplaats: " + woonplaatsInput
+				+ "</h3> Matches gevonden op plaats: " + woonplaatsResults
 				+ "<br /> <br />";
-		htmlResponse += "<h2>Rijbewijs: " + rijbewijsInput
-				+ "</h2> Matches gevonden op plaats: " + rijbewijsResults
+		htmlResponse += "<h3>Rijbewijs: " + rijbewijsInput
+				+ "</h3> Matches gevonden op plaats: " + rijbewijsResults
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Opleiding: " + opleidingInput
-				+ "</h2> Matches gevonden op plaats: " + opleidingResults
+				+ "</h3> Matches gevonden op plaats: " + opleidingResults
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Beroep: " + beroepInput
-				+ "</h2> Matches gevonden op plaats: " + beroepResults
+				+ "</h3> Matches gevonden op plaats: " + beroepResults
 				+ "<br /> <br />";
-		htmlResponse += "<h2>Aantal matchingpunten per entry gesorteerd max -> min</h2> "+hmString + "</html>";
+		htmlResponse += "<h3>Aantal matchingpunten per entry gesorteerd max -> min</h3>"
+				+hmString;
 
+		Search_CV_HTML html = new Search_CV_HTML();
+		htmlResponse = html.getHTML(htmlResponse);
+		
 		// print
 		writer.println(htmlResponse);
 
