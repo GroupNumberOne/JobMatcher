@@ -27,6 +27,16 @@ public class Executer {
 		return Output;
 	}
 	
+	public ArrayList<String> selectRow(Integer rowID) throws SQLException {
+		DBConnectorSingleton dbcs = DBConnectorSingleton.getInstance(
+				"145.24.222.158", "5432", "INFPRJ01-56", "postgres", "GroeP1");
+		
+		qh = new QueryHandler(dbcs.getDBConn());
+		Output = qh.selectRow(rowID);
+
+		return Output;
+	}
+	
 	// MATCH "word to match", "column", "table"
 	public ArrayList<Integer> Match(String WoordOmTeMatchen, String column, String table) throws SQLException {
 		ArrayList<String> selectResults = selectQuery(column,table);

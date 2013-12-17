@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webapp.java.Executer;
+import webapp.java.QueryHandler;
 
 /**
  * Servlet implementation class Search_CV_Results
@@ -66,13 +67,23 @@ public class Search_CV_Results extends HttpServlet {
         Iterator mapIterator = mapSet.iterator();
           
         int x = 0;
+        ArrayList<String> drek = null;
+        
         while (mapIterator.hasNext() && x < 10) {
             Map.Entry mapEntry = (Map.Entry) mapIterator.next();
             // getKey Method of HashMap access a key of map
             Integer keyValue = (Integer) mapEntry.getKey();
             //getValue method returns corresponding key's value
             Integer value = (Integer) mapEntry.getValue();
-            hmString += ("Key: " + keyValue + " Value: " + value +" - ");
+
+            try {
+				 drek = executer.selectRow(keyValue);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            
+            hmString += (drek+" Key: " + keyValue + " Value: " + value +" <br />");
             x += 1;
         }
 	}

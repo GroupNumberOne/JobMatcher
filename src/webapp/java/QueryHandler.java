@@ -18,7 +18,7 @@ public class QueryHandler {
 
 	// SQL query, INSERT "values" into "columns" in "table"
 	public void doInsert(String values, String columns, String table) {
-		
+
 		try {
 			Statement st = databaseConnection.createStatement();
 			st.executeUpdate("INSERT INTO " + table + " (" + columns + ") "
@@ -38,6 +38,44 @@ public class QueryHandler {
 			while (rs.next()) {
 				String str = rs.getString(column.toString());
 				result.add(str);
+			}
+
+			st.close();
+			rs.close();
+		} catch (SQLException ex) {
+			System.err.println(ex.getMessage());
+		}
+
+		return result;
+	}
+
+	public ArrayList<String> selectRow(Integer rowID) {
+		rowID -= 1;
+		String query = "SELECT * FROM cv ORDER BY id LIMIT 1 OFFSET " + rowID;
+
+		try {
+			Statement st = databaseConnection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				String vn = rs.getString("voornaam");
+				String tv = rs.getString("tussenvoegsels");
+				String an = rs.getString("achternaam");
+				String wp = rs.getString("woonplaats");
+				String ol = rs.getString("opleiding");
+				int jw = rs.getInt("jaren_werkervaring");
+				Boolean rb = rs.getBoolean("rijbewijs");
+				String url = rs.getString("url");
+
+				String totalString = "Voornaam: "+ vn
+						+ " Tussenvoegsels: "+ tv
+						+ " Achternaam: "+ an
+						+ " Opleiding: "+ ol
+						+ " Jaren werkervaring: "+ jw
+						+ " Woonplaats: "+ wp
+						+ " Rijbewijs: "+ rb
+						+ " Url: <a href='"+ url
+						+ "' target='_blank'>Klik hier om dit cv te bekijken.</a>";
+				result.add(totalString);
 			}
 
 			st.close();
