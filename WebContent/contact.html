@@ -11,9 +11,10 @@
 	<script type="text/javascript">
 		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');
 	</script>
+	<script type="text/javascript" src="js/fancyzoom.min.js"></script>
 	<script type="text/javascript" charset="utf-8">
 		$(document).ready(function() {
-			$('div.photo a').fancyZoom({directory: 'images/zoom', scaleImg: true, closeOnClick: true});
+			$('div.photo a').fancyZoom({scaleImg: true, closeOnClick: true});
 		});
 	</script>
 	<link rel="stylesheet" href="css/main.css" type="text/css" />
@@ -22,12 +23,11 @@
 	<div id="bg">
 		<div class="wrap">
 			<h1><a href="index.html">JobMatcher</a></h1>
-
 			<div id="mainmenu">
 				<ul id="menu">
-					<li><a class="current" href="#">Home</a></li>
+					<li><a href="index.html">Home</a></li>
 					<li><a href="about.html">Over ons</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a class="current" href="#">Contact</a></li>
 				</ul>
 			</div>
 
@@ -58,30 +58,28 @@
 			</div>
 
 			<div id="main">
-				<div id="intro">
-					<h2>Welkom</h2>
-					<p>Welkom op de JobMatcher website. Op deze pagina kunt u zowel CV's als vacatures opzoeken. Wij wensen u veel zoekplezier. Doei.</p>
-				</div>
-
-				<div id="bits">
-					<div class="bit">
-						<h4>Zoek naar een CV</h4>
-						<div class="photo">
-							<a href="search_cv.html"><img src="images/handshake2.png" height=100 alt="Thumb" /></a>
-						</div>
-						<p>Bent u op zoek naar potentiële werknemers, kijk dan hier.</p>
-						<p class="more"><a href="search_cv.html">Read More</a></p>
-					</div>
-					<div class="bit last">
-						<h4>Zoek naar een vacature</h4>
-						<div class="photo">
-							<a href="search_vac.html"><img src="images/handshake2.png" height=100 alt="Thumb" /></a>
-						</div>
-						<p>Bent u op zoek naar een baan, kijk dan hier.</p>
-						<p class="more"><a href="search_vac.html">Read More</a></p>
-					</div>
-					<div class="clear"></div>
-				</div>
+				<h2 class="inner">Stuur ons een email.</h2>
+				<form method="post" action="contact.html">
+					<p>
+						<label for="name">Name:</label>
+						<input type="text" class="text" name="name" id="name" />
+					</p>
+					<p>
+						<label for="email">E-mail Address:</label>
+						<input type="text" class="text" name="email" id="email" />
+					</p>
+					<p>
+						<label for="phone">Phone:</label>
+						<input type="text" class="text" name="phone" id="phone" />
+					</p>
+					<p>
+						<label for="text">Message:</label>
+						<textarea class="text" name="text" id="text"></textarea>
+					</p>
+					<p>
+						<input type="submit" class="submit" value="Send" />
+					</p>
+				</form>
 			</div>
 			
 			<div id="side">
@@ -96,7 +94,7 @@
 				</div>
 			</div> 
 		</div>
-			
+
 		<div id="footer">
 			<div id="footerbg">
 				<div class="wrap">
