@@ -22,9 +22,9 @@ public class DBConnectorSingleton {
 		databaseConn = DriverManager.getConnection(databaseUrl, props);
 
 		if (databaseConn != null) {
-			System.out.println("Verbinding gemaakt.");
+			//System.out.println("Verbinding gemaakt.");
 		} else {
-			System.out.println("Geen verbinding.");
+			//System.out.println("Geen verbinding.");
 		}
 	}
 
@@ -38,9 +38,7 @@ public class DBConnectorSingleton {
 		if (uniqueInstance == null) {
 			uniqueInstance = new DBConnectorSingleton(host, port, dbname, user,
 					pw);
-			System.out.println("Ik ben aangemaakt!");
 		} else {
-			System.out.println("Ik ben al aangemaakt!");
 		}
 		return uniqueInstance;
 

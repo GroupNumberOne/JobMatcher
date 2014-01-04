@@ -37,6 +37,16 @@ public class Executer {
 		return Output;
 	}
 	
+	public ArrayList<String> selectRowVAC(Integer rowID) throws SQLException {
+		DBConnectorSingleton dbcs = DBConnectorSingleton.getInstance(
+				"145.24.222.158", "5432", "INFPRJ01-56", "postgres", "GroeP1");
+		
+		qh = new QueryHandler(dbcs.getDBConn());
+		Output = qh.selectRowVAC(rowID);
+
+		return Output;
+	}
+	
 	// MATCH "word to match", "column", "table"
 	public ArrayList<Integer> Match(String WoordOmTeMatchen, String column, String table) throws SQLException {
 		ArrayList<String> selectResults = selectQuery(column,table);
@@ -56,7 +66,7 @@ public class Executer {
 		}
 		return hm;
 	}
-	
+
 	public static <K extends Comparable,V extends Comparable> Map<K,V> sortByValues(Map<K,V> map){
         List<Map.Entry<K,V>> entries = new LinkedList<Map.Entry<K,V>>(map.entrySet());
       

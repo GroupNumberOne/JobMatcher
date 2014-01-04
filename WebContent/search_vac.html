@@ -1,19 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Title</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>JobMatcher</title>
+	<script type="text/javascript" src="js/jquery-1.4.1.min.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="js/slideshow.js"></script>
+	<script type="text/javascript" src="js/cufon-yui.js"></script>
+	<script type="text/javascript" src="js/Arial.font.js"></script>
+	<script type="text/javascript">
+		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');
+	</script>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+			$('div.photo a').fancyZoom({directory: 'images/zoom', scaleImg: true, closeOnClick: true});
+		});
+	</script>
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
 </head>
 <body>
-	<H2>Uber Super Matching Duber</H2>
-	<br />
-	<br />
-	<br />
-	<form name="Form" method="post" action="Search_VAC_Results">
-		Vul hier uw gegevens in om naar vacatures te zoeken op basis van uw cv. <br /> <br /> 
-		Naam: <input type="text" name="plaatsInput" /> <br /> <br />
-		Achternaam: <input type="text" name="achternaamInput" /> <br /> <br />
-		Woonplaats: <input type="text" name="woonplaatsInput" /> <br /> <br />
-		<input type="submit" value="Continue" />
-	</form>
+	<div id="bg">
+		<div class="wrap">
+			<h1><a href="index.html">JobMatcher</a></h1>
+
+			<div id="mainmenu">
+				<ul id="menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a class="current" href="#">Matchen</a>
+						<ul><li><a href="search_cv.html">Zoek een CV</a></li><li><a href="search_vac.html">Zoek een vacature</a></li><li></ul>
+					</li>
+					<li><a href="about.html">Over ons</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</div>
+
+			<div id="pitch">
+				<div id="slideshow">
+					<div class="active">
+						<img src="images/banner/Banner1.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Professional Approach</h2>
+							<p>Zeer professioneel.</p>
+						</div>
+					</div>
+					<div>
+						<img src="images/banner/Banner2.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Precise Methods</h2>
+							<p>Precisie zoals u nog nooit heeft gezien.</p>
+						</div>
+					</div>
+					<div>
+						<img src="images/banner/Banner3.png" width=960 height = 280 alt="" />
+						<div class="overlay transparent">
+							<h2>Mesurable Results</h2>
+							<p>Resultaten waarvan uw mond open zal vallen.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="main">
+				<div id="intro">
+					<h2 class="inner">Zoek naar een Vacature</h2>
+					<form name="Form" method="post" action="Search_VAC_Results">
+						Vul hier gegevens in om naar vacatures te zoeken.<br /> <br /> 
+						
+						<label for="plaatsInput">In de omgeving van</label>
+						<input type="text" name="plaatsInput" required/> <br /> <br />
+						
+						<label for="itkennisInput">IT Kennis</label>
+						<input type="text" name="itkennisInput" required /> <br /> <br />
+						
+						<label for="functieInput">Functie</label>
+						<input type="text" name="functieInput" required/> <br /> <br />
+						
+						<label for="niveauInput">Niveau</label>
+						<input type="text" name="niveauInput" required/> <br /> <br />
+						
+						<label for="omschrijvingInput">Omschrijving</label>
+						<input type="text" name="omschrijvingInput" required/> <br /> <br />
+						
+						<label for="kennisInput">Kennis</label>
+						<input type="text" name="kennisInput" required/> <br /> <br />
+						
+						<label for="dienstverbandInput">Dienstverband</label>
+						<input type="text" name="dienstverbandInput" required/> <br /> <br />
+						
+						<input class="submit" type="submit" value="Continue" />
+					</form>
+				</div>
+			</div>
+			
+			<div id="side">
+				<h4>Laatste nieuws</h4>
+				<div class="news">
+					<h5><a href="#">Aantal cv's</a></h5>
+					<p>Er zijn inmiddels al meer dan 1000 cv's te vinden met JobMatcher!</p>
+				</div>
+				<div class="news">
+					<h5><a href="#">Start JobMatcher</a></h5>
+					<p>JobMatcher is vanaf nu officiëel beschikbaar!</p>
+				</div>
+			</div> 
+		</div>
+			
+		<div id="footer">
+			<div id="footerbg">
+				<div class="wrap">
+					<p id="footer_menu">
+						<a href="#">Informatie over uw privacy</a>
+						<a href="#">&#169; Groep 1 </a>
+					</p>
+					<p id="copy">JobMatcher <span>voor de beste matches</span></p>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

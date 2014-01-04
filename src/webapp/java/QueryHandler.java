@@ -57,24 +57,156 @@ public class QueryHandler {
 			Statement st = databaseConnection.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				String vn = rs.getString("voornaam");
-				String tv = rs.getString("tussenvoegsels");
-				String an = rs.getString("achternaam");
-				String wp = rs.getString("woonplaats");
-				String ol = rs.getString("opleiding");
+				String vn = "Niet opgegeven";
+				String tv = "Niet opgegeven";
+				String an = "Niet opgegeven";
+				String wp = "Niet opgegeven";
+				String ol = "Niet opgegeven";
 				int jw = rs.getInt("jaren_werkervaring");
 				Boolean rb = rs.getBoolean("rijbewijs");
-				String url = rs.getString("url");
+				String url = "Niet opgegeven";
+				
+				if (rs.getString("voornaam")!=null){
+					vn = rs.getString("voornaam");
+				}
+				
+				if (rs.getString("tussenvoegsels")!=null){
+					tv = rs.getString("tussenvoegsels");
+				}
+				
+				if (rs.getString("achternaam")!=null){
+					an = rs.getString("achternaam");
+				}
 
-				String totalString = "Voornaam: "+ vn
-						+ " Tussenvoegsels: "+ tv
-						+ " Achternaam: "+ an
-						+ " Opleiding: "+ ol
-						+ " Jaren werkervaring: "+ jw
-						+ " Woonplaats: "+ wp
-						+ " Rijbewijs: "+ rb
-						+ " Url: <a href='"+ url
-						+ "' target='_blank'>Klik hier om dit cv te bekijken.</a>";
+				if (rs.getString("woonplaats")!=null){
+					wp = rs.getString("woonplaats");
+				}
+
+				if (rs.getString("opleiding")!=null){
+					ol = rs.getString("opleiding");
+				}
+				
+				if (rs.getString("url")!=null){
+					url = rs.getString("url");
+				}
+				
+				rb = rs.getBoolean("rijbewijs");
+
+				String totalString = 
+					"<table border='1'>" 
+						+ "<tr>"
+							+ "<td>Voornaam</td><td>"+vn+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Tussenvoegsels</td><td>"+tv+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Achternaam</td><td>"+an+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Opleiding</td><td>"+ol+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Jaren werkervaring</td><td>"+jw+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Woonplaats</td><td>"+wp+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Rijbewijs</td><td>"+rb+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Bron</td><td><a href='"+url
+						+ "'target='_blank'>Klik hier om dit cv te bekijken</a>"
+					+ "</table>";
+				result.add(totalString);
+			}
+
+			st.close();
+			rs.close();
+		} catch (SQLException ex) {
+			System.err.println(ex.getMessage());
+		}
+
+		return result;
+	}
+	
+	public ArrayList<String> selectRowVAC(Integer rowID) {
+		rowID -= 1;
+		String query = "SELECT * FROM vacatures ORDER BY id LIMIT 1 OFFSET " + rowID;
+
+		try {
+			Statement st = databaseConnection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				String plaats = "Niet opgegeven";
+				String it_kennis = "Niet opgegeven";
+				String functie = "Niet opgegeven";
+				String niveau = "Niet opgegeven";
+				String omschrijving = "Niet opgegeven";
+				String kennis = "Niet opgegeven";
+				String dienstverband = "Niet opgegeven";
+				String url = "Niet opgegeven";
+				
+				if (rs.getString("plaats")!=null){
+					plaats = rs.getString("plaats");
+				}
+				
+				if (rs.getString("it_kennis")!=null){
+					it_kennis = rs.getString("it_kennis");
+				}
+				
+				if (rs.getString("functie")!=null){
+					functie = rs.getString("functie");
+				}
+
+				if (rs.getString("niveau")!=null){
+					niveau = rs.getString("niveau");
+				}
+
+				if (rs.getString("omschrijving")!=null){
+					omschrijving = rs.getString("omschrijving");
+				}
+				
+				if (rs.getString("kennis")!=null){
+					kennis = rs.getString("kennis");
+				}
+				
+				if (rs.getString("dienstverband")!=null){
+					dienstverband = rs.getString("dienstverband");
+				}
+				
+				if (rs.getString("url")!=null){
+					url = rs.getString("url");
+				}
+
+				String totalString = 
+					"<table border='1'>" 
+						+ "<tr>"
+							+ "<td>Plaats</td><td>"+plaats+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>IT Kennis</td><td>"+it_kennis+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Functie</td><td>"+functie+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Niveau</td><td>"+niveau+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Omschrijving</td><td>"+omschrijving+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Kennis</td><td>"+kennis+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Dienstverband</td><td>"+dienstverband+"</td>"
+						+ "</tr>"
+						+ "<tr>"
+							+ "<td>Bron</td><td><a href='"+url
+						+ "'target='_blank'>Klik hier om deze vacature te bekijken</a>"
+					+ "</table>";
 				result.add(totalString);
 			}
 

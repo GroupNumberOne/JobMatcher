@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webapp.java.Executer;
-import webapp.java.QueryHandler;
 import webapp.java.Search_CV_HTML;
 
 /**
@@ -68,7 +67,7 @@ public class Search_CV_Results extends HttpServlet {
         Iterator mapIterator = mapSet.iterator();
           
         int x = 0;
-        ArrayList<String> drek = null;
+        ArrayList<String> AL = null;
         
         while (mapIterator.hasNext() && x < 10) {
             Map.Entry mapEntry = (Map.Entry) mapIterator.next();
@@ -78,13 +77,13 @@ public class Search_CV_Results extends HttpServlet {
             Integer value = (Integer) mapEntry.getValue();
 
             try {
-				 drek = executer.selectRow(keyValue);
+            	AL = executer.selectRow(keyValue);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             
-            hmString += (drek+" Key: " + keyValue + " Value: " + value +" <br />");
+            hmString += ("Plaats: " + keyValue + "<br />" + " Matchingscore: " + value + "<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
             x += 1;
         }
 	}
@@ -108,6 +107,8 @@ public class Search_CV_Results extends HttpServlet {
 
 		// build HTML code
 		String htmlResponse = "<h2>Resultaten</h2>";
+		htmlResponse += "<h3>Hoogst scorende matches</h3>"
+				+ hmString;
 		htmlResponse += "<h3>Woonplaats: " + woonplaatsInput
 				+ "</h3> Matches gevonden op plaats: " + woonplaatsResults
 				+ "<br /> <br />";
@@ -120,9 +121,7 @@ public class Search_CV_Results extends HttpServlet {
 		htmlResponse += "<h2>Beroep: " + beroepInput
 				+ "</h3> Matches gevonden op plaats: " + beroepResults
 				+ "<br /> <br />";
-		htmlResponse += "<h3>Aantal matchingpunten per entry gesorteerd max -> min</h3>"
-				+hmString;
-
+		
 		Search_CV_HTML html = new Search_CV_HTML();
 		htmlResponse = html.getHTML(htmlResponse);
 		
