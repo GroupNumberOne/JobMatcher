@@ -34,7 +34,6 @@ public class Search_VAC_Results extends HttpServlet {
 	private String omschrijvingInput;
 	private String kennisInput;
 	private String dienstVerbandInput;
-	private int plaatsRangeInput;
 
 	ArrayList<Integer> plaatsResults;
 	ArrayList<Integer> itKennisResults;
@@ -108,7 +107,6 @@ public class Search_VAC_Results extends HttpServlet {
 		setOmschrijvingInput(request.getParameter("omschrijvingInput"));
 		setKennisInput(request.getParameter("kennisInput"));
 		setDienstVerbandInput(request.getParameter("dienstverbandInput"));
-		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 
 		executer = new Executer();
 		
@@ -149,7 +147,7 @@ public class Search_VAC_Results extends HttpServlet {
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Dienstverband: " + dienstVerbandInput
 				+ "</h3> Matches gevonden op plaats: " + dienstVerbandResults
-				+ "<br /> <br />" + plaatsRangeInput;
+				+ "<br /> <br />";
 
 		Search_CV_HTML html = new Search_CV_HTML();
 		htmlResponse = html.getHTML(htmlResponse);
@@ -213,13 +211,5 @@ public class Search_VAC_Results extends HttpServlet {
 
 	public void setDienstVerbandInput(String dienstVerbandInput) {
 		this.dienstVerbandInput = dienstVerbandInput;
-	}
-
-	public int getPlaatsRangeInput() {
-		return plaatsRangeInput;
-	}
-
-	public void setPlaatsRangeInput(String plaatsRangeInput) {
-		this.plaatsRangeInput = Integer.parseInt(plaatsRangeInput);
 	}
 }
