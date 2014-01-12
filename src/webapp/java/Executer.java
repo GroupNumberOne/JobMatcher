@@ -86,4 +86,68 @@ public class Executer {
       
         return sortedMap;
     }
+	
+	public double[] getLatLong(String plaats) throws SQLException {
+		DBConnectorSingleton dbcs = DBConnectorSingleton.getInstance(
+				"145.24.222.158", "5432", "INFPRJ01-56", "postgres", "GroeP1");
+		
+		qh = new QueryHandler(dbcs.getDBConn());
+		double[] results = qh.getLatLong(plaats);
+
+		return results;
+	}
+	
+	public Map<Integer, Integer> addToHashmapPlaats(ArrayList<String> plaatsResults, Map <Integer, Integer> hm, Integer range, String plaatsInput) {
+		DistanceCalculator distanceCalculator = new DistanceCalculator();
+		
+		double[] plaatsInputArray = null;
+		double[] plaatsResultsArray = null;
+				
+		for (int i = 0; i < plaatsResults.size(); i++) {
+			try {
+				plaatsInputArray = qh.getLatLong(plaatsResults.get(i).toString().trim());
+				plaatsResultsArray = qh.getLatLong(plaatsInput);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				
+			}
+			double plaatsInputLatitude = plaatsInputArray[0];
+			double plaatsInputLongitude = plaatsInputArray[1];
+			double plaatsResultsLatitude = plaatsResultsArray[0];
+			double plaatsResultsLongitude = plaatsResultsArray[1];
+			double distance = distanceCalculator.getDistance(plaatsInputLatitude,plaatsInputLongitude,plaatsResultsLatitude,plaatsResultsLongitude);
+			
+			if (distance < range) {
+				hm.put(i, 50);
+				
+				System.out.println("Waarde van i is: "+i);
+				
+				Executer executer = new Executer();
+		        ArrayList<String> AL = null;
+		            try {
+		            	AL = executer.selectRowVAC(i);
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+		            System.out.println(AL.get(0));
+		        
+		        
+		        
+		        
+		        
+				System.out.println("Van: "+plaatsResults.get(i)+" naar: "+plaatsInput+" heeft afstand: "+distance);
+			}
+			else if (distance < range*2) {
+				hm.put(i, 7);
+			}
+			
+			else {
+				hm.put(i, 0);
+			}
+			
+		}
+		return hm;
+	}
 }

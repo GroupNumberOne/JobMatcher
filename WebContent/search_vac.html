@@ -69,6 +69,16 @@
 						<label for="plaatsInput">Plaats</label>
 						<input type="text" name="plaatsInput" required/> <br /> <br />
 						
+						<label for="plaatsRangeInput">Met een straal van ... kilometer</label>
+						<input type="range" name="plaatsRangeInput" min="0" max="300" value="0" step="5" onchange="showValue(this.value)" />
+						<span id="plaatsRangeInput">0</span>
+						<script type="text/javascript">
+						function showValue(newValue)
+						{
+							document.getElementById("plaatsRangeInput").innerHTML=newValue;
+						}
+						</script>
+						
 						<label for="itkennisInput">IT Kennis</label>
 						<input type="text" name="itkennisInput" required /> <br /> <br />
 						

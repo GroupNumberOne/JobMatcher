@@ -34,8 +34,9 @@ public class Search_VAC_Results extends HttpServlet {
 	private String omschrijvingInput;
 	private String kennisInput;
 	private String dienstVerbandInput;
+	private int plaatsRangeInput;
 
-	ArrayList<Integer> plaatsResults;
+	ArrayList<String> plaatsResults;
 	ArrayList<Integer> itKennisResults;
 	ArrayList<Integer> functieResults;
 	ArrayList<Integer> niveauResults;
@@ -62,7 +63,7 @@ public class Search_VAC_Results extends HttpServlet {
 		hm.clear();
 		hmString = "";
 		
-		hm = executer.addToHashmap(plaatsResults, hm, 200);
+		hm = executer.addToHashmapPlaats(plaatsResults, hm, plaatsRangeInput, plaatsInput);
 		hm = executer.addToHashmap(itKennisResults, hm, 100);
 		hm = executer.addToHashmap(functieResults, hm, 100);
 		hm = executer.addToHashmap(niveauResults, hm, 100);
@@ -86,7 +87,7 @@ public class Search_VAC_Results extends HttpServlet {
             Integer value = (Integer) mapEntry.getValue();
 
             try {
-            	AL = executer.selectRowVAC(keyValue);
+            	AL = executer.selectRowVAC(keyValue-1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -107,10 +108,17 @@ public class Search_VAC_Results extends HttpServlet {
 		setOmschrijvingInput(request.getParameter("omschrijvingInput"));
 		setKennisInput(request.getParameter("kennisInput"));
 		setDienstVerbandInput(request.getParameter("dienstverbandInput"));
+		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 
 		executer = new Executer();
 		
-		plaatsResults = matchResults(plaatsInput, "plaats","vacatures");
+		try {
+			plaatsResults = executer.selectQuery("plaats","vacatures");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		itKennisResults = matchResults(itKennisInput, "it_kennis", "vacatures");
 		functieResults = matchResults(functieInput, "functie", "vacatures");
 		niveauResults = matchResults(niveauInput, "niveau", "vacatures");
@@ -147,7 +155,7 @@ public class Search_VAC_Results extends HttpServlet {
 				+ "<br /> <br />";
 		htmlResponse += "<h2>Dienstverband: " + dienstVerbandInput
 				+ "</h3> Matches gevonden op plaats: " + dienstVerbandResults
-				+ "<br /> <br />";
+				+ "<br /> <br />" + plaatsRangeInput;
 
 		Search_CV_HTML html = new Search_CV_HTML();
 		htmlResponse = html.getHTML(htmlResponse);
@@ -211,5 +219,13 @@ public class Search_VAC_Results extends HttpServlet {
 
 	public void setDienstVerbandInput(String dienstVerbandInput) {
 		this.dienstVerbandInput = dienstVerbandInput;
+	}
+
+	public int getPlaatsRangeInput() {
+		return plaatsRangeInput;
+	}
+
+	public void setPlaatsRangeInput(String plaatsRangeInput) {
+		this.plaatsRangeInput = Integer.parseInt(plaatsRangeInput);
 	}
 }

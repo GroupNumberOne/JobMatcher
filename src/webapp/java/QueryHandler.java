@@ -48,6 +48,33 @@ public class QueryHandler {
 
 		return result;
 	}
+	
+	public double[] getLatLong(String plaats) {
+		if (plaats.contains("'") == true){
+			plaats = plaats.replaceAll("'", "''");
+		}
+		
+		String query = "SELECT latitude,longitude FROM geocodes WHERE city = '"+plaats+"' ORDER BY id ";
+		double[] resultArray = new double[2];
+		
+		try {
+			Statement st = databaseConnection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while (rs.next()) {
+				Double lat = rs.getDouble("latitude");
+				Double lon = rs.getDouble("longitude");
+				resultArray[0] = lat;
+				resultArray[1] = lon;
+			}
+
+			st.close();
+			rs.close();
+		} catch (SQLException ex) {
+			System.err.println(ex.getMessage());
+		}
+
+		return resultArray;
+	}
 
 	public ArrayList<String> selectRow(Integer rowID) {
 		rowID -= 1;
@@ -132,7 +159,6 @@ public class QueryHandler {
 	}
 	
 	public ArrayList<String> selectRowVAC(Integer rowID) {
-		rowID -= 1;
 		String query = "SELECT * FROM vacatures ORDER BY id LIMIT 1 OFFSET " + rowID;
 
 		try {
