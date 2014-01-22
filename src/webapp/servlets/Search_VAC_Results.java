@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webapp.java.Executer;
-import webapp.java.Search_CV_HTML;
+import webapp.java.Search_Results_HTML;
 
 /**
  * Servlet implementation class Search_CV_Results
@@ -157,7 +157,7 @@ public class Search_VAC_Results extends HttpServlet {
 				+ "</h3> Matches gevonden op plaats: " + dienstVerbandResults
 				+ "<br /> <br />" + plaatsRangeInput;
 
-		Search_CV_HTML html = new Search_CV_HTML();
+		Search_Results_HTML html = new Search_Results_HTML();
 		htmlResponse = html.getHTML(htmlResponse);
 		
 		// print

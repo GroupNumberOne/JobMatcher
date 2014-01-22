@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import webapp.java.Executer;
-import webapp.java.Search_CV_HTML;
+import webapp.java.Search_Results_HTML;
 
 /**
  * Servlet implementation class Search_CV_Results
@@ -31,8 +31,9 @@ public class Search_CV_Results extends HttpServlet {
 	private String woonplaatsInput;
 	private String opleidingInput;
 	private String beroepInput;
+	private int plaatsRangeInput;
 
-	ArrayList<Integer> woonplaatsResults;
+	ArrayList<String> woonplaatsResults;
 	ArrayList<Integer> rijbewijsResults;
 	ArrayList<Integer> opleidingResults;
 	ArrayList<Integer> beroepResults;
@@ -56,7 +57,7 @@ public class Search_CV_Results extends HttpServlet {
 		hm.clear();
 		hmString = "";
 		
-		hm = executer.addToHashmap(woonplaatsResults, hm, 100);
+		hm = executer.addToHashmapPlaats(woonplaatsResults, hm, plaatsRangeInput, woonplaatsInput);
 		hm = executer.addToHashmap(rijbewijsResults, hm, 100);
 		hm = executer.addToHashmap(opleidingResults, hm, 100);
 		hm = executer.addToHashmap(beroepResults, hm, 100);
@@ -77,7 +78,7 @@ public class Search_CV_Results extends HttpServlet {
             Integer value = (Integer) mapEntry.getValue();
 
             try {
-            	AL = executer.selectRow(keyValue);
+            	AL = executer.selectRow(keyValue-1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -95,8 +96,19 @@ public class Search_CV_Results extends HttpServlet {
 		setRijbewijsInput(request.getParameter("rijbewijsInput"));
 		setOpleidingInput(request.getParameter("opleidingInput"));
 		setBeroepInput(request.getParameter("beroepInput"));
+		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 
-		woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
+		//woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
+		
+		executer = new Executer();
+		
+		try {
+			woonplaatsResults = executer.selectQuery("plaats","vacatures");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		rijbewijsResults = matchResults(rijbewijsInput, "rijbewijs", "cv");
 		opleidingResults = matchResults(opleidingInput, "opleiding", "cv");
 		beroepResults = matchResults(beroepInput, "beroep", "cv");
@@ -122,8 +134,8 @@ public class Search_CV_Results extends HttpServlet {
 				+ "</h3> Matches gevonden op plaats: " + beroepResults
 				+ "<br /> <br />";
 		
-		Search_CV_HTML html = new Search_CV_HTML();
-		htmlResponse = html.getHTML(htmlResponse);
+		Search_Results_HTML template = new Search_Results_HTML();
+		htmlResponse = template.getHTML(htmlResponse);
 		
 		// print
 		writer.println(htmlResponse);
@@ -160,5 +172,13 @@ public class Search_CV_Results extends HttpServlet {
 
 	public void setBeroepInput(String BeroepInput) {
 		this.beroepInput = BeroepInput;
+	}
+
+	public int getPlaatsRangeInput() {
+		return plaatsRangeInput;
+	}
+
+	public void setPlaatsRangeInput(String plaatsRangeInput) {
+		this.plaatsRangeInput = Integer.parseInt(plaatsRangeInput);
 	}
 }

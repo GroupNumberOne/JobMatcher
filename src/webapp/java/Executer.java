@@ -132,11 +132,6 @@ public class Executer {
 						e.printStackTrace();
 					}
 		            System.out.println(AL.get(0));
-		        
-		        
-		        
-		        
-		        
 				System.out.println("Van: "+plaatsResults.get(i)+" naar: "+plaatsInput+" heeft afstand: "+distance);
 			}
 			else if (distance < range*2) {

@@ -77,34 +77,28 @@ public class QueryHandler {
 	}
 
 	public ArrayList<String> selectRow(Integer rowID) {
-		rowID -= 1;
 		String query = "SELECT * FROM cv ORDER BY id LIMIT 1 OFFSET " + rowID;
-
+		
 		try {
 			Statement st = databaseConnection.createStatement();
 			ResultSet rs = st.executeQuery(query);
 			while (rs.next()) {
-				String vn = "Niet opgegeven";
-				String tv = "Niet opgegeven";
-				String an = "Niet opgegeven";
+				String itkennis = "Niet opgegeven";
+				String beroep = "Niet opgegeven";
 				String wp = "Niet opgegeven";
 				String ol = "Niet opgegeven";
 				int jw = rs.getInt("jaren_werkervaring");
 				Boolean rb = rs.getBoolean("rijbewijs");
 				String url = "Niet opgegeven";
 				
-				if (rs.getString("voornaam")!=null){
-					vn = rs.getString("voornaam");
+				if (rs.getString("it_kennis")!=null){
+					itkennis = rs.getString("it_kennis");
 				}
 				
-				if (rs.getString("tussenvoegsels")!=null){
-					tv = rs.getString("tussenvoegsels");
+				if (rs.getString("beroep")!=null){
+					beroep = rs.getString("beroep");
 				}
 				
-				if (rs.getString("achternaam")!=null){
-					an = rs.getString("achternaam");
-				}
-
 				if (rs.getString("woonplaats")!=null){
 					wp = rs.getString("woonplaats");
 				}
@@ -122,13 +116,10 @@ public class QueryHandler {
 				String totalString = 
 					"<table border='1'>" 
 						+ "<tr>"
-							+ "<td>Voornaam</td><td>"+vn+"</td>"
+							+ "<td>Beroep</td><td>"+beroep+"</td>"
 						+ "</tr>"
 						+ "<tr>"
-							+ "<td>Tussenvoegsels</td><td>"+tv+"</td>"
-						+ "</tr>"
-						+ "<tr>"
-							+ "<td>Achternaam</td><td>"+an+"</td>"
+							+ "<td>IT Kennis</td><td>"+itkennis+"</td>"
 						+ "</tr>"
 						+ "<tr>"
 							+ "<td>Opleiding</td><td>"+ol+"</td>"

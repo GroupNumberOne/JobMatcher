@@ -1,9 +1,9 @@
 package webapp.java;
 
-public class Search_CV_HTML {
+public class Search_Results_HTML {
 	
 	public String getHTML(String string){
-		String EXAMPLE_TEST ="<!DOCTYPE html>\r\n" + 
+		String STRING ="<!DOCTYPE html>\r\n" + 
 			"<html>\r\n" + 
 			"<head>\r\n" + 
 			"	<meta http-equiv=\"content-type\" content=\"text/html;charset=utf-8\" />\r\n" + 
@@ -100,6 +100,6 @@ public class Search_CV_HTML {
 			"	</div>\r\n" + 
 			"</body>\r\n" + 
 			"</html>";
-		return EXAMPLE_TEST;
+		return STRING;
 	}
 }
