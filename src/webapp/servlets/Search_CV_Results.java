@@ -96,6 +96,7 @@ public class Search_CV_Results extends HttpServlet {
 		setRijbewijsInput(request.getParameter("rijbewijsInput"));
 		setOpleidingInput(request.getParameter("opleidingInput"));
 		setBeroepInput(request.getParameter("beroepInput"));
+		setPlaatsRangeInput("0");
 		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 
 		//woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");

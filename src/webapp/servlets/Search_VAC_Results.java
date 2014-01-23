@@ -108,6 +108,7 @@ public class Search_VAC_Results extends HttpServlet {
 		setOmschrijvingInput(request.getParameter("omschrijvingInput"));
 		setKennisInput(request.getParameter("kennisInput"));
 		setDienstVerbandInput(request.getParameter("dienstverbandInput"));
+		setPlaatsRangeInput("0");
 		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 
 		executer = new Executer();

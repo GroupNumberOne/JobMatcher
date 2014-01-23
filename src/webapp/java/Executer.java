@@ -118,7 +118,7 @@ public class Executer {
 			double plaatsResultsLongitude = plaatsResultsArray[1];
 			double distance = distanceCalculator.getDistance(plaatsInputLatitude,plaatsInputLongitude,plaatsResultsLatitude,plaatsResultsLongitude);
 			
-			if (distance < range) {
+			if (distance <= range) {
 				hm.put(i, 50);
 				
 				System.out.println("Waarde van i is: "+i);
@@ -134,7 +134,7 @@ public class Executer {
 		            System.out.println(AL.get(0));
 				System.out.println("Van: "+plaatsResults.get(i)+" naar: "+plaatsInput+" heeft afstand: "+distance);
 			}
-			else if (distance < range*2) {
+			else if (distance <= range*2) {
 				hm.put(i, 7);
 			}
 			
