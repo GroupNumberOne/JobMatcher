@@ -83,7 +83,7 @@ public class Search_Results_HTML {
 			"				</div>\r\n" + 
 			"				<div class=\"news\">\r\n" + 
 			"					<h5><a href=\"#\">Start JobMatcher</a></h5>\r\n" + 
-			"					<p>JobMatcher is vanaf nu officiëel beschikbaar!</p>\r\n" + 
+			"					<p>JobMatcher is vanaf nu offici&#235;el beschikbaar!</p>\r\n" + 
 			"				</div>\r\n" + 
 			"			</div> \r\n" + 
 			"		</div>\r\n" + 
