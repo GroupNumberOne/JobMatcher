@@ -16,11 +16,6 @@ public class Search_Results_HTML {
 			"	<script type=\"text/javascript\">\r\n" + 
 			"		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');\r\n" + 
 			"	</script>\r\n" + 
-			"	<script type=\"text/javascript\" charset=\"utf-8\">\r\n" + 
-			"		$(document).ready(function() {\r\n" + 
-			"			$('div.photo a').fancyZoom({directory: 'images/zoom', scaleImg: true, closeOnClick: true});\r\n" + 
-			"		});\r\n" + 
-			"	</script>\r\n" + 
 			"	<link rel=\"stylesheet\" href=\"css/main.css\" type=\"text/css\" />\r\n" + 
 			"</head>\r\n" + 
 			"<body>\r\n" + 
@@ -34,14 +29,14 @@ public class Search_Results_HTML {
 			"					<li><a href=\"#\">Matchen</a>\r\n" + 
 			"						<ul><li><a href=\"search_cv.html\">Zoek een CV</a></li><li><a href=\"search_vac.html\">Zoek een vacature</a></li><li></ul>\r\n" + 
 			"					</li>\r\n" + 
-			"<li><a href=\"#\">Dashboards</a>\r\n" +
-			"<ul>" +
-			"	<li><a href=\"http://infprj01-56.no-ip.org:8009/dashboard/bob\">Bob</a></li>" +
-			"	<li><a href=\"http://infprj01-56.no-ip.org/dashboard/deborah/\">Deborah</a></li>" +
-			"	<li><a href=\"http://infprj01-56.no-ip.org:8008/dashboard/patrick\">Patrick</a></li>" +
-			"	<li><a href=\"http://infprj01-56.no-ip.org/dashboard/pepijn/\">Pepijn</a></li>" +
-			"</ul>" +
-			"</li>" +
+			"<li><a href=\"#\">Dashboards</a>" +
+			"	<ul>" +
+			"		<li><a href=\"http://infprj01-56.no-ip.org:8009/dashboard/bob\">Bob</a></li>" +
+			"		<li><a href=\"http://infprj01-56.no-ip.org/dashboard/deborah/\">Deborah</a></li>"+
+			"		<li><a href=\"http://infprj01-56.no-ip.org:8008/dashboard/patrick\">Patrick</a></li>" +
+			"		<li><a href=\"http://infprj01-56.no-ip.org/dashboard/pepijn/\">Pepijn</a></li>" +
+			"		</ul>"+
+			"</li>"+
 			"					<li><a href=\"about.html\">Over ons</a></li>\r\n" + 
 			"					<li><a href=\"contact.html\">Contact</a></li>\r\n" + 
 			"				</ul>\r\n" + 
