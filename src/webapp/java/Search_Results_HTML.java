@@ -17,6 +17,37 @@ public class Search_Results_HTML {
 			"		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');\r\n" + 
 			"	</script>\r\n" + 
 			"	<link rel=\"stylesheet\" href=\"css/main.css\" type=\"text/css\" />\r\n" + 
+			"<style type=\"text/css\">\r\n" + 
+			"#tablestyle {\r\n" + 
+			"	border: 1px solid #DFDFDF;\r\n" + 
+			"	background-color: #F9F9F9;\r\n" + 
+			"	width: 100%;\r\n" + 
+			"	-moz-border-radius: 3px;\r\n" + 
+			"	-webkit-border-radius: 3px;\r\n" + 
+			"	border-radius: 3px;\r\n" + 
+			"	font-family: Arial,\"Bitstream Vera Sans\",Helvetica,Verdana,sans-serif;\r\n" + 
+			"	color: #333;\r\n" + 
+			"}\r\n" + 
+			"#tablestyle td, #tablestyle th {\r\n" + 
+			"	border-top-color: white;\r\n" + 
+			"	border-bottom: 1px solid #DFDFDF;\r\n" + 
+			"	color: #555;\r\n" + 
+			"}\r\n" + 
+			"#tablestyle th {\r\n" + 
+			"	text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;\r\n" + 
+			"	font-family: Georgia,\"Times New Roman\",\"Bitstream Charter\",Times,serif;\r\n" + 
+			"	font-weight: normal;\r\n" + 
+			"	padding: 7px 7px 8px;\r\n" + 
+			"	text-align: left;\r\n" + 
+			"	line-height: 1.3em;\r\n" + 
+			"	font-size: 14px;\r\n" + 
+			"}\r\n" + 
+			"#tablestyle td {\r\n" + 
+			"	font-size: 12px;\r\n" + 
+			"	padding: 4px 7px 2px;\r\n" + 
+			"	vertical-align: top;\r\n" + 
+			"}\r\n" + 
+			"</style>" +
 			"</head>\r\n" + 
 			"<body>\r\n" + 
 			"	<div id=\"bg\">\r\n" + 
@@ -61,7 +92,7 @@ public class Search_Results_HTML {
 			"					<div>\r\n" + 
 			"						<img src=\"images/banner/Banner3.png\" width=960 height = 280 alt=\"\" />\r\n" + 
 			"						<div class=\"overlay transparent\">\r\n" + 
-			"							<h2>Mesurable Results</h2>\r\n" + 
+			"							<h2>Measurable Results</h2>\r\n" + 
 			"							<p>Resultaten waarvan uw mond open zal vallen.</p>\r\n" + 
 			"						</div>\r\n" + 
 			"					</div>\r\n" + 

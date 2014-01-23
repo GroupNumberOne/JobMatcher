@@ -120,19 +120,6 @@ public class Executer {
 			
 			if (distance <= range) {
 				hm.put(i, 50);
-				
-				System.out.println("Waarde van i is: "+i);
-				
-				Executer executer = new Executer();
-		        ArrayList<String> AL = null;
-		            try {
-		            	AL = executer.selectRowVAC(i);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-		            System.out.println(AL.get(0));
-				System.out.println("Van: "+plaatsResults.get(i)+" naar: "+plaatsInput+" heeft afstand: "+distance);
 			}
 			else if (distance <= range*2) {
 				hm.put(i, 7);

@@ -84,8 +84,8 @@ public class Search_CV_Results extends HttpServlet {
 				e.printStackTrace();
 			}
             
-            hmString += ("Plaats: " + keyValue + "<br />" + " Matchingscore: " + value + "<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
             x += 1;
+            hmString += ("Rankingplaats: "+x+"<br />" + "Plaats: " + keyValue + "<br />" + " Matchingscore: " + value + "<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
         }
 	}
 	

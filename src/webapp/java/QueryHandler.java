@@ -114,7 +114,7 @@ public class QueryHandler {
 				rb = rs.getBoolean("rijbewijs");
 
 				String totalString = 
-					"<table border='1'>" 
+					"<table id='tablestyle' border='1'>" 
 						+ "<tr>"
 							+ "<td>Beroep</td><td>"+beroep+"</td>"
 						+ "</tr>"
@@ -198,7 +198,7 @@ public class QueryHandler {
 				}
 
 				String totalString = 
-					"<table border='1'>" 
+					"<table id='tablestyle' border='1'>" 
 						+ "<tr>"
 							+ "<td>Plaats</td><td>"+plaats+"</td>"
 						+ "</tr>"
