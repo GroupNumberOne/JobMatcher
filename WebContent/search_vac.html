@@ -81,7 +81,7 @@
 						{
 							document.getElementById("plaatsRangeInput").innerHTML=newValue;
 						}
-						</script>
+						</script>  <br /> <br />
 						
 						<label for="itkennisInput">IT Kennis</label>
 						<input type="text" class="text" name="itkennisInput" required /> <br /> <br />
@@ -99,9 +99,14 @@
 						<input type="text" class="text" name="kennisInput" required/> <br /> <br />
 						
 						<label for="dienstverbandInput">Dienstverband</label>
-						<input type="text" class="text" name="dienstverbandInput" required/> <br /> <br />
-						
-						<input class="submit" type="submit" value="Continue" onClick="document.getElementById('floatingCirclesG').style.display='block'" />
+						<select name="dienstverbandInput">
+							<option value="vast">Vast</option>
+							<option value="parttime">Parttime</option>
+							<option value="uitzenden">Uitzenden</option>
+							<option value="detacheren">Detacheren</option>
+						</select>  <br /> <br /> 
+
+						<input class="submit" type="submit" value="Begin zoekopdracht" onClick="document.getElementById('floatingCirclesG').style.display='block'" />
 					</form>
 					
 					
