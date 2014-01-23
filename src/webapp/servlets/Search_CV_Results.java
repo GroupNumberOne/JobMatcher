@@ -98,8 +98,6 @@ public class Search_CV_Results extends HttpServlet {
 		setBeroepInput(request.getParameter("beroepInput"));
 		setPlaatsRangeInput("0");
 		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
-
-		//woonplaatsResults = matchResults(woonplaatsInput, "woonplaats", "cv");
 		
 		executer = new Executer();
 		
@@ -120,21 +118,8 @@ public class Search_CV_Results extends HttpServlet {
 
 		// build HTML code
 		String htmlResponse = "<h2>Resultaten</h2>";
-		htmlResponse += "<h3>Hoogst scorende matches</h3>"
-				+ hmString;
-		htmlResponse += "<h3>Woonplaats: " + woonplaatsInput
-				+ "</h3> Matches gevonden op plaats: " + woonplaatsResults
-				+ "<br /> <br />";
-		htmlResponse += "<h3>Rijbewijs: " + rijbewijsInput
-				+ "</h3> Matches gevonden op plaats: " + rijbewijsResults
-				+ "<br /> <br />";
-		htmlResponse += "<h2>Opleiding: " + opleidingInput
-				+ "</h3> Matches gevonden op plaats: " + opleidingResults
-				+ "<br /> <br />";
-		htmlResponse += "<h2>Beroep: " + beroepInput
-				+ "</h3> Matches gevonden op plaats: " + beroepResults
-				+ "<br /> <br />";
-		
+		htmlResponse += "<h3>Hoogst scorende matches</h3>" + hmString;
+
 		Search_Results_HTML template = new Search_Results_HTML();
 		htmlResponse = template.getHTML(htmlResponse);
 		

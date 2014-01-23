@@ -119,10 +119,10 @@ public class Executer {
 			double distance = distanceCalculator.getDistance(plaatsInputLatitude,plaatsInputLongitude,plaatsResultsLatitude,plaatsResultsLongitude);
 			
 			if (distance <= range) {
-				hm.put(i, 50);
+				hm.put(i, 150);
 			}
 			else if (distance <= range*2) {
-				hm.put(i, 7);
+				hm.put(i, 75);
 			}
 			
 			else {
