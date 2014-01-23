@@ -34,6 +34,14 @@ public class Search_Results_HTML {
 			"					<li><a href=\"#\">Matchen</a>\r\n" + 
 			"						<ul><li><a href=\"search_cv.html\">Zoek een CV</a></li><li><a href=\"search_vac.html\">Zoek een vacature</a></li><li></ul>\r\n" + 
 			"					</li>\r\n" + 
+			"<li><a href=\"#\">Dashboards</a>\r\n" +
+			"<ul>" +
+			"	<li><a href=\"http://infprj01-56.no-ip.org:8009/dashboard/bob\">Bob</a></li>" +
+			"	<li><a href=\"http://infprj01-56.no-ip.org/dashboard/deborah/\">Deborah</a></li>" +
+			"	<li><a href=\"http://infprj01-56.no-ip.org:8008/dashboard/patrick\">Patrick</a></li>" +
+			"	<li><a href=\"http://infprj01-56.no-ip.org/dashboard/pepijn/\">Pepijn</a></li>" +
+			"</ul>" +
+			"</li>" +
 			"					<li><a href=\"about.html\">Over ons</a></li>\r\n" + 
 			"					<li><a href=\"contact.html\">Contact</a></li>\r\n" + 
 			"				</ul>\r\n" + 
