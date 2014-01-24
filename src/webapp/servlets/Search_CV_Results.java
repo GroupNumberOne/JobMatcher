@@ -28,6 +28,7 @@ public class Search_CV_Results extends HttpServlet {
 	private Executer executer;
 
 	private String rijbewijsInput;
+	private String itKennisInput;
 	private String woonplaatsInput;
 	private String opleidingInput;
 	private String beroepInput;
@@ -37,6 +38,7 @@ public class Search_CV_Results extends HttpServlet {
 	ArrayList<Integer> rijbewijsResults;
 	ArrayList<Integer> opleidingResults;
 	ArrayList<Integer> beroepResults;
+	ArrayList<Integer> itKennisResults;
 	
 	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
 	String hmString ="";
@@ -61,6 +63,7 @@ public class Search_CV_Results extends HttpServlet {
 		hm = executer.addToHashmap(rijbewijsResults, hm, 100);
 		hm = executer.addToHashmap(opleidingResults, hm, 100);
 		hm = executer.addToHashmap(beroepResults, hm, 100);
+		hm = executer.addToHashmap(itKennisResults, hm, 100);
 		
         hm = Executer.sortByValues(hm);
         
@@ -78,14 +81,16 @@ public class Search_CV_Results extends HttpServlet {
             Integer value = (Integer) mapEntry.getValue();
 
             try {
-            	AL = executer.selectRow(keyValue-1);
+            	AL = executer.selectRow(keyValue);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
             
             x += 1;
-            hmString += ("Rankingplaats: "+x+"<br />" + "Plaats: " + keyValue + "<br />" + " Matchingscore: " + value + "<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
+            keyValue += 1;
+            hmString += ("Rankingplaats: "+x+"<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
+            //"Plaats: " + keyValue + "<br />" + " Matchingscore: " + value
         }
 	}
 	
@@ -96,13 +101,14 @@ public class Search_CV_Results extends HttpServlet {
 		setRijbewijsInput(request.getParameter("rijbewijsInput"));
 		setOpleidingInput(request.getParameter("opleidingInput"));
 		setBeroepInput(request.getParameter("beroepInput"));
+		setItKennisInput(request.getParameter("itKennisInput"));
 		setPlaatsRangeInput("0");
 		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
 		
 		executer = new Executer();
 		
 		try {
-			woonplaatsResults = executer.selectQuery("plaats","vacatures");
+			woonplaatsResults = executer.selectQuery("woonplaats","cv");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,6 +117,7 @@ public class Search_CV_Results extends HttpServlet {
 		rijbewijsResults = matchResults(rijbewijsInput, "rijbewijs", "cv");
 		opleidingResults = matchResults(opleidingInput, "opleiding", "cv");
 		beroepResults = matchResults(beroepInput, "beroep", "cv");
+		itKennisResults = matchResults(itKennisInput, "it_kennis", "cv");
 		createResultsHM();
 
 		// get response writer
@@ -166,5 +173,13 @@ public class Search_CV_Results extends HttpServlet {
 
 	public void setPlaatsRangeInput(String plaatsRangeInput) {
 		this.plaatsRangeInput = Integer.parseInt(plaatsRangeInput);
+	}
+
+	public String getItKennisInput() {
+		return itKennisInput;
+	}
+
+	public void setItKennisInput(String itKennisInput) {
+		this.itKennisInput = itKennisInput;
 	}
 }

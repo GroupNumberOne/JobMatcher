@@ -114,7 +114,10 @@ public class QueryHandler {
 				rb = rs.getBoolean("rijbewijs");
 
 				String totalString = 
-					"<table id='tablestyle' border='1'>" 
+					"<div class=\"CSSTableGenerator\" ><table border='1'>" 
+						+ "<tr>"
+							+ "<td>Eigenschap</td><td>Waarde</td>"
+						+ "</tr>"
 						+ "<tr>"
 							+ "<td>Beroep</td><td>"+beroep+"</td>"
 						+ "</tr>"
@@ -136,7 +139,7 @@ public class QueryHandler {
 						+ "<tr>"
 							+ "<td>Bron</td><td><a href='"+url
 						+ "'target='_blank'>Klik hier om dit cv te bekijken</a>"
-					+ "</table>";
+					+ "</table></div>";
 				result.add(totalString);
 			}
 
@@ -198,7 +201,10 @@ public class QueryHandler {
 				}
 
 				String totalString = 
-					"<table id='tablestyle' border='1'>" 
+					"<div class=\"CSSTableGenerator\" > <table  border='1'>" 
+						+ "<tr>"
+							+ "<td>Eigenschap</td><td>Waarde</td>"
+						+ "</tr>"
 						+ "<tr>"
 							+ "<td>Plaats</td><td>"+plaats+"</td>"
 						+ "</tr>"
@@ -223,7 +229,7 @@ public class QueryHandler {
 						+ "<tr>"
 							+ "<td>Bron</td><td><a href='"+url
 						+ "'target='_blank'>Klik hier om deze vacature te bekijken</a>"
-					+ "</table>";
+					+ "</table></div>";
 				result.add(totalString);
 			}
 

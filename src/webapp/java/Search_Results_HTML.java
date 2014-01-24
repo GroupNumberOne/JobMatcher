@@ -17,37 +17,103 @@ public class Search_Results_HTML {
 			"		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');\r\n" + 
 			"	</script>\r\n" + 
 			"	<link rel=\"stylesheet\" href=\"css/main.css\" type=\"text/css\" />\r\n" + 
-			"<style type=\"text/css\">\r\n" + 
-			"#tablestyle {\r\n" + 
-			"	border: 1px solid #DFDFDF;\r\n" + 
-			"	background-color: #F9F9F9;\r\n" + 
-			"	width: 100%;\r\n" + 
-			"	-moz-border-radius: 3px;\r\n" + 
-			"	-webkit-border-radius: 3px;\r\n" + 
-			"	border-radius: 3px;\r\n" + 
-			"	font-family: Arial,\"Bitstream Vera Sans\",Helvetica,Verdana,sans-serif;\r\n" + 
-			"	color: #333;\r\n" + 
+			"<style>.CSSTableGenerator {\r\n" + 
+			"	margin:0px;padding:0px;\r\n" + 
+			"	width:100%;\r\n" + 
+			"	border:0px solid #000000;\r\n" + 
+			"	\r\n" + 
+			"	-moz-border-radius-bottomleft:0px;\r\n" + 
+			"	-webkit-border-bottom-left-radius:0px;\r\n" + 
+			"	border-bottom-left-radius:0px;\r\n" + 
+			"	\r\n" + 
+			"	-moz-border-radius-bottomright:0px;\r\n" + 
+			"	-webkit-border-bottom-right-radius:0px;\r\n" + 
+			"	border-bottom-right-radius:0px;\r\n" + 
+			"	\r\n" + 
+			"	-moz-border-radius-topright:0px;\r\n" + 
+			"	-webkit-border-top-right-radius:0px;\r\n" + 
+			"	border-top-right-radius:0px;\r\n" + 
+			"	\r\n" + 
+			"	-moz-border-radius-topleft:0px;\r\n" + 
+			"	-webkit-border-top-left-radius:0px;\r\n" + 
+			"	border-top-left-radius:0px;\r\n" + 
+			"}.CSSTableGenerator table{\r\n" + 
+			"    border-collapse: collapse;\r\n" + 
+			"        border-spacing: 0;\r\n" + 
+			"	width:100%;\r\n" + 
+			"	height:100%;\r\n" + 
+			"	margin:0px;padding:0px;\r\n" + 
+			"}.CSSTableGenerator tr:last-child td:last-child {\r\n" + 
+			"	-moz-border-radius-bottomright:0px;\r\n" + 
+			"	-webkit-border-bottom-right-radius:0px;\r\n" + 
+			"	border-bottom-right-radius:0px;\r\n" + 
 			"}\r\n" + 
-			"#tablestyle td, #tablestyle th {\r\n" + 
-			"	border-top-color: white;\r\n" + 
-			"	border-bottom: 1px solid #DFDFDF;\r\n" + 
-			"	color: #555;\r\n" + 
+			".CSSTableGenerator table tr:first-child td:first-child {\r\n" + 
+			"	-moz-border-radius-topleft:0px;\r\n" + 
+			"	-webkit-border-top-left-radius:0px;\r\n" + 
+			"	border-top-left-radius:0px;\r\n" + 
 			"}\r\n" + 
-			"#tablestyle th {\r\n" + 
-			"	text-shadow: rgba(255, 255, 255, 0.796875) 0px 1px 0px;\r\n" + 
-			"	font-family: Georgia,\"Times New Roman\",\"Bitstream Charter\",Times,serif;\r\n" + 
-			"	font-weight: normal;\r\n" + 
-			"	padding: 7px 7px 8px;\r\n" + 
-			"	text-align: left;\r\n" + 
-			"	line-height: 1.3em;\r\n" + 
-			"	font-size: 14px;\r\n" + 
+			".CSSTableGenerator table tr:first-child td:last-child {\r\n" + 
+			"	-moz-border-radius-topright:0px;\r\n" + 
+			"	-webkit-border-top-right-radius:0px;\r\n" + 
+			"	border-top-right-radius:0px;\r\n" + 
+			"}.CSSTableGenerator tr:last-child td:first-child{\r\n" + 
+			"	-moz-border-radius-bottomleft:0px;\r\n" + 
+			"	-webkit-border-bottom-left-radius:0px;\r\n" + 
+			"	border-bottom-left-radius:0px;\r\n" + 
+			"}.CSSTableGenerator tr:hover td{\r\n" + 
+			"	\r\n" + 
 			"}\r\n" + 
-			"#tablestyle td {\r\n" + 
-			"	font-size: 12px;\r\n" + 
-			"	padding: 4px 7px 2px;\r\n" + 
-			"	vertical-align: top;\r\n" + 
+			".CSSTableGenerator tr:nth-child(odd){ background-color:#e5e5e5; }\r\n" + 
+			".CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }.CSSTableGenerator td{\r\n" + 
+			"	vertical-align:middle;\r\n" + 
+			"	\r\n" + 
+			"	\r\n" + 
+			"	border:1px solid #000000;\r\n" + 
+			"	border-width:0px 1px 1px 0px;\r\n" + 
+			"	text-align:left;\r\n" + 
+			"	padding:7px;\r\n" + 
+			"	font-size:12px;\r\n" + 
+			"	font-family:Arial;\r\n" + 
+			"	font-weight:normal;\r\n" + 
+			"	color:#000000;\r\n" + 
+			"}" +
+			".CSSTableGenerator td a{\r\n" + 
+			"text-decoration: underline;\r\n" + 
+			"}"
+			+ ".CSSTableGenerator tr:last-child td{\r\n" + 
+			"	border-width:0px 1px 0px 0px;\r\n" + 
+			"}.CSSTableGenerator tr td:last-child{\r\n" + 
+			"	border-width:0px 0px 1px 0px;\r\n" + 
+			"}.CSSTableGenerator tr:last-child td:last-child{\r\n" + 
+			"	border-width:0px 0px 0px 0px;\r\n" + 
 			"}\r\n" + 
-			"</style>" +
+			".CSSTableGenerator tr:first-child td{\r\n" + 
+			"		background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );\r\n" + 
+			"	background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );\r\n" + 
+			"	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#cccccc\", endColorstr=\"#b2b2b2\");	background: -o-linear-gradient(top,#cccccc,b2b2b2);\r\n" + 
+			"\r\n" + 
+			"	background-color:#cccccc;\r\n" + 
+			"	border:0px solid #000000;\r\n" + 
+			"	text-align:center;\r\n" + 
+			"	border-width:0px 0px 1px 1px;\r\n" + 
+			"	font-size:14px;\r\n" + 
+			"	font-family:Arial;\r\n" + 
+			"	color:#000000;\r\n" + 
+			"}\r\n" + 
+			".CSSTableGenerator tr:first-child:hover td{\r\n" + 
+			"	background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );\r\n" + 
+			"	background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );\r\n" + 
+			"	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=\"#cccccc\", endColorstr=\"#b2b2b2\");	background: -o-linear-gradient(top,#cccccc,b2b2b2);\r\n" + 
+			"\r\n" + 
+			"	background-color:#cccccc;\r\n" + 
+			"}\r\n" + 
+			".CSSTableGenerator tr:first-child td:first-child{\r\n" + 
+			"	border-width:0px 0px 1px 0px;\r\n" + 
+			"}\r\n" + 
+			".CSSTableGenerator tr:first-child td:last-child{\r\n" + 
+			"	border-width:0px 0px 1px 1px;\r\n" + 
+			"} </style>" +
 			"</head>\r\n" + 
 			"<body>\r\n" + 
 			"	<div id=\"bg\">\r\n" + 

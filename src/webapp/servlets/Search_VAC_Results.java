@@ -31,7 +31,6 @@ public class Search_VAC_Results extends HttpServlet {
 	private String itKennisInput;
 	private String functieInput;
 	private String niveauInput;
-	private String omschrijvingInput;
 	private String dienstVerbandInput;
 	private int plaatsRangeInput;
 
@@ -39,7 +38,6 @@ public class Search_VAC_Results extends HttpServlet {
 	ArrayList<Integer> itKennisResults;
 	ArrayList<Integer> functieResults;
 	ArrayList<Integer> niveauResults;
-	ArrayList<Integer> omschrijvingResults;
 	ArrayList<Integer> dienstVerbandResults;
 	
 	Map<Integer, Integer> hm = new HashMap<Integer, Integer>();
@@ -65,7 +63,6 @@ public class Search_VAC_Results extends HttpServlet {
 		hm = executer.addToHashmap(itKennisResults, hm, 100);
 		hm = executer.addToHashmap(functieResults, hm, 100);
 		hm = executer.addToHashmap(niveauResults, hm, 100);
-		hm = executer.addToHashmap(omschrijvingResults, hm, 100);
 		hm = executer.addToHashmap(dienstVerbandResults, hm, 100);
 		
         hm = Executer.sortByValues(hm);
@@ -84,13 +81,16 @@ public class Search_VAC_Results extends HttpServlet {
             Integer value = (Integer) mapEntry.getValue();
 
             try {
-            	AL = executer.selectRowVAC(keyValue-1);
+            	AL = executer.selectRowVAC(keyValue);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            
             x += 1;
-            hmString += ("Rankingplaats: "+x+"<br />" +"Plaats: " + keyValue + "<br />" + " Matchingscore: " + value + "<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
+            keyValue += 1;
+            hmString += ("Rankingplaats: "+x+"<br />" + "<br />" + AL.get(0) + "<br />" + "<br />" );
+            //"Plaats: " + keyValue + "<br />" + " Matchingscore: " + value
         }
 	}
 	
@@ -101,7 +101,6 @@ public class Search_VAC_Results extends HttpServlet {
 		setItKennisInput(request.getParameter("itkennisInput"));
 		setFunctieInput(request.getParameter("functieInput"));
 		setNiveauInput(request.getParameter("niveauInput"));
-		setOmschrijvingInput(request.getParameter("omschrijvingInput"));
 		setDienstVerbandInput(request.getParameter("dienstverbandInput"));
 		setPlaatsRangeInput("0");
 		setPlaatsRangeInput(request.getParameter("plaatsRangeInput"));
@@ -118,7 +117,6 @@ public class Search_VAC_Results extends HttpServlet {
 		itKennisResults = matchResults(itKennisInput, "it_kennis", "vacatures");
 		functieResults = matchResults(functieInput, "functie", "vacatures");
 		niveauResults = matchResults(niveauInput, "niveau", "vacatures");
-		omschrijvingResults = matchResults(omschrijvingInput, "omschrijving", "vacatures");
 		dienstVerbandResults = matchResults(dienstVerbandInput, "dienstverband", "vacatures");
 		
 		createResultsHM();
@@ -168,14 +166,6 @@ public class Search_VAC_Results extends HttpServlet {
 
 	public void setNiveauInput(String niveauInput) {
 		this.niveauInput = niveauInput;
-	}
-
-	public String getOmschrijvingInput() {
-		return omschrijvingInput;
-	}
-
-	public void setOmschrijvingInput(String omschrijvingInput) {
-		this.omschrijvingInput = omschrijvingInput;
 	}
 
 	public String getDienstVerbandInput() {
