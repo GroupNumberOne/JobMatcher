@@ -16,6 +16,7 @@ public class Search_Results_HTML {
 			"	<script type=\"text/javascript\">\r\n" + 
 			"		Cufon.replace('h1,h2,h3,h4,h5,#menu,#copy,.blog-date');\r\n" + 
 			"	</script>\r\n" + 
+			"<link rel=\"shortcut icon\" type=\"image/x-icon\" href=\"http://infprj01-56.no-ip.org/favicon.ico\" />" +
 			"	<link rel=\"stylesheet\" href=\"css/main.css\" type=\"text/css\" />\r\n" + 
 			"<style>.CSSTableGenerator {\r\n" + 
 			"	margin:0px;padding:0px;\r\n" + 
